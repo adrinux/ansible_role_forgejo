@@ -1,9 +1,17 @@
-[![Ansible Galaxy](https://ansible.l3d.space/svg/roles-ansible.gitea.svg)](https://galaxy.ansible.com/ui/standalone/roles/roles-ansible/gitea/)
-[![BSD-3 Clause](https://ansible.l3d.space/svg/roles-ansible.gitea_license.svg)](LICENSE)
-[![Maintenance](https://ansible.l3d.space/svg/roles-ansible.gitea_maintainance.svg)](https://ansible.l3d.space/#roles-ansible.gitea)
+[![Ansible Galaxy](https://ansible.l3d.space/svg/roles-ansible.forgejo.svg)](https://galaxy.ansible.com/ui/standalone/roles/l3d/forgejo/)
+[![BSD-3 Clause](https://ansible.l3d.space/svg/roles-ansible.forgejo_license.svg)](LICENSE)
+[![Maintenance](https://ansible.l3d.space/svg/roles-ansible.forgejo_maintainance.svg)](https://ansible.l3d.space/#l3d.forgejo)
 
- ansible role gitea/forgejo
+ ansible role forgejo
 ============================
+
+```
+STOP
+
+THIS ROLE IS GOING TO CHANGE TO A FORGEJO ONLY ROLE.
+SOME VARIABLE NAMES WILL PROBABLY CHANGE
+```
+
 
 This role installs and manages [gitea](https://gitea.io) or [forgejo](https://forgejo.org). A painless self-hosted Git service. Gitea is a community managed lightweight code hosting solution written in Go. Forgejo is a fork of it.
 [Source code & screenshots gitea](https://github.com/go-gitea/gitea).
@@ -12,9 +20,9 @@ This role is also Part of the Ansible-Collection [l3d.git](https://galaxy.ansibl
 
 ## Mirrors
 The role is mirrored to:
-+ Github: [github.com/roles-ansible/ansible_role_gitea](https://github.com/roles-ansible/ansible_role_gitea.git)
-+ Gitea: [git.l3d.ch/ansible/ansible_role_gitea](https://git.l3d.ch/ansible/ansible_role_gitea.git)
-More about it at [ansible.l3d.space](https://ansible.l3d.space/#roles-ansible.gitea)
++ Github: [github.com/roles-ansible/ansible_role_gitea](https://github.com/roles-ansible/ansible_role_forgejo.git)
++ Gitea: [git.l3d.ch/ansible/ansible_role_gitea](https://git.l3d.ch/ansible/ansible_role_forgejo.git)
+More about it at [ansible.l3d.space](https://ansible.l3d.space/#l3d.forgejo)
 
 ## Sample Usage in a playbook
 
