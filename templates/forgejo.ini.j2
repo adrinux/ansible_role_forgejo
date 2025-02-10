@@ -3,16 +3,16 @@
 ;
 ; This file overwrites the default values from Forgejo.
 ; undefined variables will use the default value from Forgejo.
-; Cheat Sheet: https://docs.gitea.com/next/administration/config-cheat-sheet/
+; Cheat Sheet: https://forgejo.org/docs/latest/admin/config-cheat-sheet/
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet#overall-default
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#overall-default
 APP_NAME = {{ forgejo_app_name }}
 RUN_USER = {{ forgejo_user }}
 RUN_MODE = {{ forgejo_run_mode }}
 WORK_PATH = {{ forgejo_home }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#repository-repository
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#repository-repository
 [repository]
 ROOT = {{ forgejo_repository_root }}
 FORCE_PRIVATE = {{ forgejo_force_private | ternary('true', 'false') }}
@@ -28,7 +28,7 @@ DEFAULT_BRANCH = {{ forgejo_default_branch }}
 {{ forgejo_repository_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/administration/config-cheat-sheet/#repository---upload-repositoryupload
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#repository---upload-repositoryupload
 [repository.upload]
 ENABLED = {{ forgejo_repository_upload_enabled | ternary('true', 'false') }}
 TEMP_PATH = {{ forgejo_home }}/data/tmp/uploads
@@ -37,7 +37,7 @@ FILE_MAX_SIZE = {{ forgejo_repository_upload_max_size }}
 ;
 ;
 {% if forgejo_enable_repo_signing_options | bool %}
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#repository---signing-repositorysigning
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#repository---signing-repositorysigning
 [repository.signing]
 SIGNING_KEY = {{ forgejo_repo_signing_key }}
 SIGNING_NAME = {{ forgejo_repo_signing_name }}
@@ -53,7 +53,7 @@ MERGES = {{ forgejo_repo_merges }}
 ;
 {% if forgejo_enable_cors | bool %}
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#cors-cors
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#cors-cors
 [cors]
 ENABLED = {{ forgejo_enable_cors | ternary('true', 'false') }}
 SCHEME = {{ forgejo_cors_scheme }}
@@ -68,7 +68,7 @@ X_FRAME_OPTIONS = {{ forgejo_cors_x_frame_options }}
 ;
 {% endif %}
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#ui-ui
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#ui-ui
 [ui]
 THEMES = {{ forgejo_themes }}
 DEFAULT_THEME = {{ forgejo_theme_default }}
@@ -84,7 +84,7 @@ KEYWORDS = {{ forgejo_ui_keywords }}
 {{ forgejo_ui_meta_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#server-server
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#server-server
 [server]
 APP_DATA_PATH = {{ forgejo_home }}/data
 PROTOCOL = {{ forgejo_protocol }}
@@ -121,7 +121,7 @@ ACME_CA_ROOT = {{ forgejo_acme_ca_root }}
 {{ forgejo_server_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#database-database
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#database-database
 [database]
 DB_TYPE = {{ forgejo_db_type }}
 HOST = {{ forgejo_db_host }}
@@ -134,7 +134,7 @@ LOG_SQL = {{ forgejo_db_log_sql | ternary('true', 'false') }}
 {{ forgejo_database_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#indexer-indexer
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#indexer-indexer
 [indexer]
 ISSUE_INDEXER_PATH = {{ forgejo_home }}/indexers/issues.bleve
 REPO_INDEXER_ENABLED = {{ forgejo_repo_indexer_enabled | ternary('true', 'false') }}
@@ -147,13 +147,13 @@ MAX_FILE_SIZE = {{ forgejo_repo_indexer_max_file_size }}
 ;
 ;
 ; Queue (queue and queue.*)
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#queue-queue-and-queue
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#queue-queue-and-queue
 [queue.issue_indexer]
 DATADIR = {{ forgejo_home }}/indexers/issues.queue
 {{ forgejo_queue_issue_indexer_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#security-security
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#security-security
 [security]
 INSTALL_LOCK = true
 SECRET_KEY = {{ forgejo_secret_key }}
@@ -164,7 +164,7 @@ PASSWORD_CHECK_PWN = {{ forgejo_password_check_pwn | ternary('true', 'false') }}
 {{ forgejo_security_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#service-service
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#service-service
 [service]
 REGISTER_EMAIL_CONFIRM = {{ forgejo_register_email_confirm | ternary('true', 'false') }}
 DISABLE_REGISTRATION = {{ forgejo_disable_registration | ternary('true', 'false') }}
@@ -189,7 +189,7 @@ ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ forgejo_allow_only_external_registration |
 {{ forgejo_service_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#mailer-mailer
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#mailer-mailer
 [mailer]
 ENABLED = {{ forgejo_mailer_enabled | ternary('true', 'false') }}
 {% if forgejo_mailer_enabled | bool %}
@@ -213,20 +213,20 @@ SEND_AS_PLAIN_TEXT = {{ forgejo_mailer_send_as_plaintext | ternary('true', 'fals
 {% endif %}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#session-session
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#session-session
 [session]
 PROVIDER = {{ forgejo_session_provider }}
 PROVIDER_CONFIG = {{ forgejo_session_provider_config }}
 {{ forgejo_session_extra_config }}
 ;
 ;
-; -> https://docs.forgejo.com/next/administration/config-cheat-sheet/#picture-picture
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#picture-picture
 [picture]
 AVATAR_UPLOAD_PATH = {{ forgejo_home }}/data/avatars
 {{ forgejo_picture_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#issue-and-pull-request-attachments-attachment
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#issue-and-pull-request-attachments-attachment
 [attachment]
 ENABLED = {{ forgejo_attachment_enabled | ternary('true', 'false') }}
 ALLOWED_TYPES = {{ forgejo_attachment_types }}
@@ -235,7 +235,7 @@ PATH = {{ forgejo_home }}/data/attachments
 {{ forgejo_attachment_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#log-log
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#log-log
 [log]
 ROOT_PATH = {{ forgejo_home }}/log
 {% if forgejo_log_systemd %}
@@ -247,21 +247,21 @@ LEVEL = {{ forgejo_log_level }}
 {{ forgejo_log_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#metrics-metrics
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#metrics-metrics
 [metrics]
 ENABLED = {{ forgejo_metrics_enabled | ternary('true', 'false') }}
 TOKEN = {{ forgejo_metrics_token }}
 {{ forgejo_metrics_extra }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#oauth2-oauth2
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#oauth2-oauth2
 [oauth2]
 ENABLED = {{ forgejo_oauth2_enabled | ternary('true', 'false') }}
 JWT_SECRET = {{ forgejo_oauth2_jwt_secret }}
 {{ forgejo_oauth2_extra_config }}
 ;
 ;
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#federation-federation
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#federation-federation
 [federation]
 ENABLED = {{ forgejo_federation_enabled | ternary('true', 'false') }}
 SHARE_USER_STATISTICS = {{ forgejo_federation_share_user_stats | ternary('true', 'false') }}
@@ -269,7 +269,7 @@ SHARE_USER_STATISTICS = {{ forgejo_federation_share_user_stats | ternary('true',
 ;
 ;
 ; Packages (packages)
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#packages-packages
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#packages-packages
 [packages]
 ENABLED = {{ forgejo_packages_enabled | ternary('true', 'false') }}
 {% if forgejo_packages_enabled | bool %}
@@ -279,7 +279,7 @@ CHUNKED_UPLOAD_PATH = {{ forgejo_home }}/data/tmp/package-upload
 ;
 ;
 {% if forgejo_lfs_server_enabled | bool %}
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#lfs-lfs
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#lfs-lfs
 [lfs]
 STORAGE_TYPE = {{ forgejo_lfs_storage_type }}
 SERVE_DIRECT = {{ forgejo_lfs_serve_direct | ternary('true', 'false') }}
@@ -289,7 +289,7 @@ PATH = {{ forgejo_lfs_content_path }}
 ;
 ;
 {% if forgejo_actions_enabled | bool %}
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#actions-actions
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#actions-actions
 [actions]
 ENABLED = {{ forgejo_actions_enabled }}
 DEFAULT_ACTIONS_URL = {{ forgejo_actions_default_actions_url }}
@@ -298,7 +298,7 @@ DEFAULT_ACTIONS_URL = {{ forgejo_actions_default_actions_url }}
 ;
 ;
 ; Other (other)
-; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#other-other
+; -> https://forgejo.org/docs/latest/admin/config-cheat-sheet/#other-other
 [other]
 SHOW_FOOTER_VERSION = {{ forgejo_other_show_footer_version | ternary('true', 'false') }}
 SHOW_FOOTER_TEMPLATE_LOAD_TIME = {{ forgejo_other_show_footer_template_load_time | ternary('true', 'false') }}
