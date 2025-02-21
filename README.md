@@ -44,7 +44,7 @@ The following code has been tested with the latest Debian Stable, it should work
     forgejo_start_ssh: true
 ```
 
-## Choosing between Gitea's built-in SSH and host SSH Server
+## Choosing between Forgejo's built-in SSH and host SSH Server
 
 Forgejo has a built-in SSH server which is running on port 2222 (to not conflict with the host SSH server which usually running on port 22).
 This one is used by default in this role and results in a SSH clone URL of `forgejo@<fqdn>:2222:<user>/<repo>.git` because `forgejo` is the default `RUN_AS` user.
@@ -69,9 +69,9 @@ See [this issue](https://github.com/go-gitea/gitea/issues/28563) for more inform
 Here is a deeper insight into the variables of this forgejo role. For the exact function of some variables and the possibility to add more options we recommend a look at this [config cheat sheet](https://forgejo.org/docs/latest/admin/config-cheat-sheet/).
 
 ### Forgejo update mechanism
-It is advisable to define exactly which Forgejo release you want to install. See [Forgejo releases](https://forgejo.org/releases/) for the correct value to use in `gitea_version` eg `v1.21.5`.
+It is advisable to define exactly which Forgejo release you want to install. See [Forgejo releases](https://forgejo.org/releases/) for the correct value to use in `forgejo_version` eg `v1.21.5`.
 
-This is because the Forgejo project maintains both `stable` and `old stable` releases and the `latest` tag will refer to the *most recent release* regardless of whether it is `stable` or `old stable`. This can lead to a situation where `latest` refers to an *older release* than the version you have installed.
+This is because the Forgejo project maintains both `stable` and `old stable` releases and the `latest` tag will refer to the *most recent release* regardless of whether it is from the `stable` or `old stable` series. This can lead to a situation where `latest` refers to an *older release* than the version you have installed.
 
 ### forgejo update
 | variable name | default value | description |
@@ -104,7 +104,7 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_run_mode`| `prod`| Application run mode, affects performance and debugging. Either “dev”, “prod” or “test”. |
 | `forgejo_fqdn` | `localhost` | Base FQDN for the installation, used as default for other variables. Set it to the FQDN where you can reach your forgejo server |
 
-### Repository ([repository](https://docs.gitea.com/administration/config-cheat-sheet#repository-repository))
+### Repository ([repository](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#repository-repository))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_default_branch` | `main` | Default branch name of all repositories. |
@@ -120,14 +120,14 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_repository_root` | `{{ forgejo_home }}/repos` |  Root path for storing all repository data. It must be an absolute path. |
 | `forgejo_repository_extra_config` | | you can use this variable to pass additional config parameters in the `[repository]` section of the config. |
 
-### Repository - Upload ([repository.upload](https://docs.gitea.io/en-us/administration/config-cheat-sheet#repository---upload-repositoryupload))
+### Repository - Upload ([repository.upload](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#repository---upload-repositoryupload))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_repository_upload_enabled` | `true` | Whether repository file uploads are enabled |
 | `forgejo_repository_upload_max_size` | `4` | Max size of each file in megabytes. |
 | `forgejo_repository_upload_extra_config` | | you can use this variable to pass additional config parameters in the `[repository.upload]` section of the config. |
 
-### Repository - Signing ([repository.signing](https://docs.gitea.com/administration/config-cheat-sheet#repository---signing-repositorysigning))
+### Repository - Signing ([repository.signing](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#repository---signing-repositorysigning))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_enable_repo_signing_options` | `false` | Allow to configure repo signing options |
@@ -141,7 +141,7 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_repo_merges` | *(see defaults)* | Sign merges. |
 | `forgejo_enable_repo_signing_extra` | | you can use this variable to pass additional config parameters in the `[repository.signing]` section of the config. |
 
-### CORS ([cors](https://docs.gitea.com/administration/config-cheat-sheet#cors-cors))
+### CORS ([cors](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#cors-cors))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_enable_cors` | `false` | enable cors headers (disabled by default) |
@@ -155,14 +155,14 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_cors_x_frame_options` | `SAMEORIGIN` |  Set the `X-Frame-Options` header value. |
 | `forgejo_cors_extra` | | you can use this variable to pass additional config parameters in the `[cors]` section of the config. |
 
-### UI ([ui](https://docs.gitea.com/administration/config-cheat-sheet#ui-ui))
+### UI ([ui](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#ui-ui))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_show_user_email` | `false` | Do you want to display email addresses ? (true/false) |
 | `forgejo_theme_default` | `forgejo-auto` | Default theme |
 | `forgejo_ui_extra_config` | | you can use this variable to pass additional config parameters in the `[ui]` section of the config. |
 
-### UI - Meta ([ui.meta](https://docs.gitea.com/administration/config-cheat-sheet#ui---metadata-uimeta))
+### UI - Metadata ([ui.meta](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#ui---metadata-uimeta))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_ui_author` | *(see defaults)* | Author meta tag of the homepage. |
@@ -170,7 +170,7 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_ui_keywords` | *(see defaults)* | Keywords meta tag of the homepage |
 | `forgejo_ui_meta_extra_config` | | you can use this variable to pass additional config parameters in the `[ui.meta]` section of the config. |
 
-### Server ([server](https://docs.gitea.com/administration/config-cheat-sheet#server-server))
+### Server ([server](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#server-server))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_protocol`| `http` | Listening protocol [http, https, fcgi, unix, fcgi+unix] |
@@ -199,7 +199,7 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_acme_ca_root` | | The CA’s root certificate. If left empty, it defaults to using the system’s trust chain. |
 | `forgejo_server_extra_config` |  | you can use this variable to pass additional config parameters in the `[server]` section of the config. |
 
-### Database ([database](https://docs.gitea.com/administration/config-cheat-sheet#database-database))
+### Database ([database](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#database-database))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_db_type` | `sqlite3` | The database type in use `[mysql, postgres, mssql, sqlite3]`. |
@@ -207,12 +207,12 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_db_name` | `root` | Database name |
 | `forgejo_db_user` | `forgejo` | Database username |
 | `forgejo_db_password` | `lel` | Database password. **PLEASE CHANGE** |
-| `forgejo_db_ssl` | `disable` | Configure SSL only if your database type supports it. Have a look into the [config-cheat-sheet](https://docs.gitea.com/administration/config-cheat-sheet#database-database) for more detailed information |
+| `forgejo_db_ssl` | `disable` | Configure SSL only if your database type supports it. Have a look into the [config-cheat-sheet](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#database-database) for more detailed information |
 | `forgejo_db_path` | `{{ forgejo_home }}/data/forgejo.db` | DB path, if you use `sqlite3`. |
 | `forgejo_db_log_sql` | `false` | Log the executed SQL. |
 | `forgejo_database_extra_config` | | you can use this variable to pass additional config parameters in the `[database]` section of the config. |
 
-### Indexer ([indexer](https://docs.gitea.com/administration/config-cheat-sheet#indexer-indexer))
+### Indexer ([indexer](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#indexer-indexer))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_repo_indexer_enabled` | `false` | Enables code search *(uses a lot of disk space, about 6 times more than the repository size).* |
@@ -223,7 +223,7 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_indexer_extra_config` |  | you can use this variable to pass additional config parameters in the `[indexer]` section of the config. |
 | `forgejo_queue_issue_indexer_extra_config` | | | you can use this variable to pass additional config parameters in the `[queue.issue_indexer]` section of the config. |
 
-### Security ([security](https://docs.gitea.com/administration/config-cheat-sheet#security-security))
+### Security ([security](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#security-security))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_secret_key` | | Global secret key. Will be autogenerated if not defined. Should be unique. |
@@ -233,7 +233,7 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_password_check_pwn` | `false` | Check [HaveIBeenPwned](https://haveibeenpwned.com/Passwords) to see if a password has been exposed. |
 | `forgejo_security_extra_config` | | you can use this variable to pass additional config parameters in the `[security]` section of the config. |
 
-### Service ([service](https://docs.gitea.com/administration/config-cheat-sheet#service-service))
+### Service ([service](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#service-service))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_disable_registration` | `false` | Do you want to disable user registration? (true/false) |
@@ -257,7 +257,7 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_default_user_is_restricted` | `false` | Give new users restricted permissions by default (true/false) |
 | `forgejo_service_extra_config` | | you can use this variable to pass additional config parameters in the `[service]` section of the config. |
 
-### Mailer ([mailer](https://docs.gitea.com/administration/config-cheat-sheet#mailer-mailer))
+### Mailer ([mailer](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#mailer-mailer))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_mailer_enabled` | `false` | Whether to enable the mailer. |
@@ -276,18 +276,18 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_mailer_send_as_plaintext` | `false` | Send mails only in plain text, without HTML alternative. |
 | `forgejo_mailer_extra_config` | | you can use this variable to pass additional config parameters in the `[mailer]` section of the config. |
 
-### Session ([session](https://docs.gitea.com/administration/config-cheat-sheet#session-session))
+### Session ([session](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#session-session))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_session_provider` | `file` | Session engine provider |
 | `forgejo_session_extra_config` | | you can use this variable to pass additional config parameters in the `[session]` section of the config. |
 
-### Picture ([picture](https://docs.gitea.com/administration/config-cheat-sheet#picture-picture))
+### Picture ([picture](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#picture-picture))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_picture_extra_config` | | you can use this variable to pass additional config parameters in the `[picture]` section of the config. |
 
-### Issue and pull request attachments ([attachment](https://docs.gitea.com/administration/config-cheat-sheet#issue-and-pull-request-attachments-attachment))
+### Issue and pull request attachments ([attachment](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#issue-and-pull-request-attachments-attachment))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `attachment_enabled` | `true` | Whether issue and pull request attachments are enabled. |
@@ -295,41 +295,41 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_attachment_max_size` | `4` | Maximum size (MB). |
 | `forgejo_attachment_extra_config` | | you can use this variable to pass additional config parameters in the `[attachment]` section of the config. |
 
-### Log ([log](https://docs.gitea.com/administration/config-cheat-sheet#log-log))
+### Log ([log](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#log-log))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_log_systemd` | `false` | Disable logging into `file`, use systemd-journald |
 | `forgejo_log_level` | `Warn` | General log level. `[Trace, Debug, Info, Warn, Error, Critical, Fatal, None]` |
 | `forgejo_log_extra_config` | | you can use this variable to pass additional config parameters in the `[log]` section of the config. |
 
-### Metrics ([metrics](https://docs.gitea.com/administration/config-cheat-sheet#metrics-metrics))
+### Metrics ([metrics](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#metrics-metrics))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_metrics_enabled`| `false` | Enable the metrics endpoint |
 | `forgejo_metrics_token`| | Bearer token for the Prometheus scrape job |
 | `forgejo_metrics_extra` | | you can use this variable to pass additional config parameters in the `[metrics]` section of the config. |
 
-### OAuth2 ([oauth2](https://docs.gitea.com/administration/config-cheat-sheet#oauth2-oauth2))
+### OAuth2 ([oauth2](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#oauth2-oauth2))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_oauth2_enabled` | `true` | Enable the Oauth2 provider (true/false) |
 | `forgejo_oauth2_jwt_secret` |  | Oauth2 JWT secret. Can be generated with ``forgejo generate secret JWT_SECRET``. Will be autogenerated if not defined. |
 | `forgejo_oauth2_extra_config` |  | you can use this variable to pass additional config parameters in the `[oauth2]` section of the config. |
 
-### Federation ([federation](https://docs.gitea.com/administration/config-cheat-sheet#federation-federation))
+### Federation ([federation](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#federation-federation))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_federation_enabled` | `false` | Enable/Disable federation capabilities |
 | `forgejo_federation_share_user_stats` | `false` | Enable/Disable user statistics for nodeinfo if federation is enabled |
 | `forgejo_federation_extra` | | you can use this variable to pass additional config parameters in the `[federation]` section of the config. |
 
-### Packages ([packages](https://docs.gitea.com/administration/config-cheat-sheet#packages-packages))
+### Packages ([packages](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#packages-packages))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_packages_enabled` | `true` | Enable/Disable package registry capabilities |
 | `forgejo_packages_extra` | |you can use this variable to pass additional config parameters in the `[packages]` section of the config. |
 
-### LFS ([lfs](https://docs.gitea.com/administration/config-cheat-sheet#lfs-lfs))
+### LFS ([lfs](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#lfs-lfs))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_lfs_storage_type` | `local` | Storage type for lfs |
@@ -337,14 +337,14 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_lfs_content_path` | `{{ forgejo_home }}/data/lfs` | Where to store LFS files |
 | `forgejo_lfs_extra` | | you can use this variable to pass additional config parameters in the `[lfs]` section of the config. |
 
-### Actions ([actions](https://docs.gitea.com/administration/config-cheat-sheet#actions-actions))
+### Actions ([actions](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#actions-actions))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_actions_enabled` | `false` | Enable/Disable actions capabilities globally. You may want to add `repo.actions` to `forgejo_default_repo_units` to enable actions on all new repositories |
 | `forgejo_actions_default_actions_url` | `github` | Default address to get action plugins, e.g. the default value means downloading from `https://github.com/actions/checkout` for `uses: actions/checkout@v3` |
 | `forgejo_actions_extra` | | you can use this variable to pass additional config parameters in the `[actions]` section of the config. |
 
-### Other ([other](https://docs.gitea.com/administration/config-cheat-sheet#other-other))
+### Other ([other](https://forgejo.org/docs/latest/admin/config-cheat-sheet/#other-other))
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
 | `forgejo_other_show_footer_version` | `true` | Show Gitea and Go version information in the footer. |
@@ -352,14 +352,14 @@ This is because the Forgejo project maintains both `stable` and `old stable` rel
 | `forgejo_other_enable_sitemap` | `true` | Generate sitemap. |
 | `forgejo_other_enable_feed` | `true` | Enable/Disable RSS/Atom feed. |
 
-### additional gitea config
+### additional forgejo config
 | variable name | default value | description |
 | ------------- | ------------- | ----------- |
-| `forgejo_extra_config` | | Additional gitea configuration. Have a look at the [config-cheat-sheet](https://docs.gitea.com/administration/config-cheat-sheet) before using it! |
+| `forgejo_extra_config` | | Additional forgejo configuration. Have a look at the [config-cheat-sheet](https://forgejo.org/docs/latest/admin/config-cheat-sheet/) before using it! |
 
 ### Fail2Ban configuration
 
-If enabled, this will deploy a fail2ban filter and jail config for Gitea as described in the [Gitea Documentation](https://docs.gitea.io/en-us/fail2ban-setup/).
+If enabled, this will deploy a fail2ban filter and jail config for Forgejo as described in the [Gitea Documentation](https://docs.gitea.io/en-us/fail2ban-setup/) (there is no up to date Forgejo specific documentation for Fail2ban).
 
 As this will only deploy config files, fail2ban already has to be installed or otherwise the role will fail.
 
@@ -383,7 +383,7 @@ As this will only deploy config files, fail2ban already has to be installed or o
 | | ``state`` | set to ``absent`` to delete user |
 
 ### optional customisation
-You can optionally customize your forgejo using this ansible role. We got our information about customisation from [docs.gitea.io/en-us/customizing-gitea](https://docs.gitea.io/en-us/customizing-gitea/).
+You can optionally customize your forgejo using this ansible role. We got our information about customisation from [docs.gitea.io/en-us/customizing-gitea](https://docs.gitea.io/en-us/customizing-gitea/) and [https://forgejo.org/docs/next/contributor/customization/](https://forgejo.org/docs/next/contributor/customization/).
 To deploy multiple files we created the ``forgejo_custom_search`` variable, that can point to the path where you put the custom forgejo files *( default ``"files/host_files/{{ inventory_hostname }}/forgejo"``)*.
 
 + **LOGO**:
@@ -421,7 +421,7 @@ To deploy multiple files we created the ``forgejo_custom_search`` variable, that
   - Set `forgejo_themes` variable and include the names of the new themes. To keep the existing ones, you need to pass all themes names, e.g. `forgejo-auto,<custom-auto>,<custom-light>,<custom-dark>`
 
 ## Requirements
-This role uses the ``ansible.builtin`` and ``community.general`` ansible Collections. To download the latest forgejo/gitea release we use json_query. This requires ``jmespath`` to be available.
+This role uses the ``ansible.builtin`` and ``community.general`` ansible Collections. To download the latest forgejo release we use json_query. This requires ``jmespath`` to be available.
 
 ### Python packages
 + jmespath
@@ -442,4 +442,8 @@ Mastodon [@l3d@chaos.social](https://chaos.social/@l3d).
 I'll be happy to fix any issues you raise, or even better, review your pull requests :)
 
 ## History of this role
-This ansible role was originally developed on [github.com/thomas-maurice/ansible-role-gitea](https://github.com/thomas-maurice/ansible-role-gitea.git). Since the role there has some problems like default values for the location of the gitea repositories and the merging of pull requests usually takes several months, a fork of the role was created that offers the same. Only tidier and with the claim to react faster to issues and pull requests. It is now Part of the [l3d.git](https://galaxy.ansible.com/l3d/git) Collection too.
+This ansible role was originally developed on [github.com/thomas-maurice/ansible-role-gitea](https://github.com/thomas-maurice/ansible-role-gitea.git). Since the role there had some problems like default values for the location of the gitea repositories and the merging of pull requests usually takes several months, a fork of the role was created that offered the same. Only tidier and with the claim to react faster to issues and pull requests.
+
+Later the role was modified to allow the installation of Forgejo or Gitea. Following the divergence of Forgejo from Gitea in 2024, this role was forked into specific Gitea and Forgejo versions at the beginning of 2025.
+
+It is now Part of the [l3d.git](https://galaxy.ansible.com/l3d/git) Collection too.
