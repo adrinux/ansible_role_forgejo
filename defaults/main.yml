@@ -17,7 +17,6 @@ forgejo_group: "forgejo"
 forgejo_home: "/var/lib/forgejo"
 forgejo_user_home: "{{ forgejo_home }}"
 forgejo_executable_path: "/usr/local/bin/forgejo"
-forgejo_forgejo_executable_path: "/usr/local/bin/forgejo"
 forgejo_configuration_path: "/etc/forgejo"
 forgejo_shell: "/bin/false"
 forgejo_systemd_cap_net_bind_service: false

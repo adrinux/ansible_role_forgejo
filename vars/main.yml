@@ -11,11 +11,11 @@ forgejo_arch: "{{ forgejo_go_arch_map[ansible_architecture] | default(ansible_ar
 
 forgejo_variables:
   files:
-    - "forgejo}.yml"
+    - "forgejo.yml"
   paths:
     - "vars"
 
-forgejo_variables:
+forgejo_os_variables:
   files:
     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
