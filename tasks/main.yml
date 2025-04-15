@@ -14,10 +14,6 @@
       ansible.builtin.include_vars:
         file: "{{ lookup('ansible.builtin.first_found',
           forgejo_variables) }}"
-  # rescue:
-  #   - name: Forgejo import info
-  #     ansible.builtin.fail:
-  #       msg: "Only {{ gitea_supported_forks }} are supported."
 
 - name: Gather variables for each operating system
   ansible.builtin.include_vars:
