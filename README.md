@@ -20,7 +20,7 @@ This role is also Part of the Ansible-Collection [l3d.git](https://galaxy.ansibl
 ## Mirrors
 The role is mirrored to:
 + Github: [github.com/roles-ansible/ansible_role_forgejo](https://github.com/roles-ansible/ansible_role_forgejo.git)
-+ Gitea: [git.l3d.ch/ansible/ansible_role_forgejo](https://git.l3d.ch/ansible/ansible_role_forgejo.git)
+<!-- + Gitea: [git.l3d.ch/ansible/ansible_role_forgejo](https://git.l3d.ch/ansible/ansible_role_forgejo.git) -->
 More about it at [ansible.l3d.space](https://ansible.l3d.space/#l3d.forgejo)
 
 ## Sample Usage in a playbook
