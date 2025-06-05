@@ -1,4 +1,8 @@
 ---
+
+# Forgejo repo location
+forgejo_repo: "code.forgejo.org"
+
 # Forgejo version
 # (The following line needs reviewed: forgejo/codeberg latest release is not always the most recent version due to LTS releases.)
 # Use 'latest' to auto-update; upgrading past role version may lead to errors.
