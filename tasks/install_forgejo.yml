@@ -29,7 +29,7 @@
         url: "{{ forgejo_dl_url | first }}"
         dest: "/tmp/{{ forgejo_filename }}"
         checksum: "sha256:{{ forgejo_checksum }}"
-        mode: 0640
+        mode: "0640"
       register: _download_archive
       become: false
       until: _download_archive is succeeded
@@ -40,7 +40,7 @@
       ansible.builtin.get_url:
         url: "{{ forgejo_signed_url | first }}"
         dest: "/tmp/{{ forgejo_filename }}.asc"
-        mode: 0640
+        mode: "0640"
       register: _download_asc
       become: false
       until: _download_asc is succeeded
@@ -89,7 +89,7 @@
         src: "/tmp/{{ forgejo_filename }}"
         remote_src: true
         dest: "{{ forgejo_full_executable_path }}"
-        mode: 0755
+        mode: "0755"
         owner: root
         group: root
       notify: "systemctl restart forgejo"
